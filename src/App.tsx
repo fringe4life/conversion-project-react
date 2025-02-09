@@ -9,7 +9,7 @@ function App() {
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
 
   /**
    * @abstract A way of checking if the provided element is an HTMLInputElement.
