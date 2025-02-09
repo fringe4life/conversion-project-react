@@ -11,4 +11,11 @@ export default defineConfig({
       plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
     },
   }), tailwindcss()],
+  build: {
+    minify: true,
+    outDir: 'dist',
+    rollupOptions: {
+      input: ['index.html'],
+    }
+  }
 })

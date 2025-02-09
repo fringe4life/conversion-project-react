@@ -5,7 +5,7 @@ interface WrapperProps   {
 }
 
 export default function Wrapper({children}: PropsWithChildren<WrapperProps>  ){
-    return <main className="w-lg">
-        {children}  {/* Replace this with your actual children components */}
+    return <main className="bg-zinc-100 dark:bg-[#1F2937] flex flex-col gap-y-[1.5rem] py-[1.5rem]">
+        {children} 
     </main>
 }
