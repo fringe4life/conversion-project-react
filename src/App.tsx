@@ -7,8 +7,15 @@ import Conversion from './components/Conversion';
 
 function App() {
 
+  /**
+   * The ref for the input field.
+   */
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
+  /**
+   * The state to hold the current value of the input field.
+   * Initial value is 1.
+   */
   const [value, setValue] = React.useState(1);
 
   /**
@@ -24,21 +31,21 @@ function App() {
   };
 
   /**
-   * 
+   * @abstract Returns the current value of the input field.
    */
-  const getCurrentValue = () => {
+  const getCurrentValue = (): number => {
 		if (isInputElement(inputRef.current)) {
 			return Number.parseInt(inputRef.current?.value);
 		} 
-    return -1;
+    return 1;
 	}
   /**
-   * 
+   * @abstract Updates the state with the current value of the input field.
+   * @param event The event object from the button click event.
+   * @returns returns nothing.
    */
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    // must update the Conversion component with the new value
-    setValue(()=> getCurrentValue());
-
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (_): void => {
+    setValue(() => getCurrentValue());
   }
 
   return (
