@@ -12,11 +12,14 @@
 }
 
 body {
+	/* typography */
+	font-family: "Inter", serif;
+
+	/* layout */
 	margin: 0;
-
 	max-width: 34.375rem;
-
 	margin-inline: auto;
 
+	/* debug */
 	border: 1px dotted purple;
 }
