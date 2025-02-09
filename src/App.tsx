@@ -2,6 +2,7 @@
 import React from 'react';
 import './App.css'
 import Header from './components/Header'
+import Wrapper from './components/Wrapper';
 
 function App() {
 
@@ -31,7 +32,10 @@ function App() {
   }
 
   return (
-    <Header ref={inputRef} handleClick={handleClick} />
+    <>
+      <Header ref={inputRef} handleClick={handleClick} />
+      <Wrapper />
+    </>
   )
 }
 
