@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css'
 import Header from './components/Header'
 import Wrapper from './components/Wrapper';
-import Conversion from './components/Conversion';
+import Conversion, { type ConversionProps} from './components/Conversion';
 
 function App() {
 
@@ -35,7 +35,10 @@ function App() {
    */
   const getCurrentValue = (): number => {
 		if (isInputElement(inputRef.current)) {
-			return Number.parseInt(inputRef.current?.value);
+			const {value} = inputRef.current;
+      const num = Number.parseInt(value);
+      if(Number.isNaN(num)) return 1;
+      return num;
 		} 
     return 1;
 	}
@@ -48,13 +51,37 @@ function App() {
     setValue(() => getCurrentValue());
   }
 
+  const conversionData = [
+    {
+      convertToUnit1: 3.28084,
+      convertToUnit2: 0.3408,
+      title: "Length (Meter/Feet)",
+      unit1: 'meters',
+      unit2: 'feet',
+    },
+    {
+      convertToUnit1: 3.7854,
+      convertToUnit2: 0.2641729,
+      title: "Volume (Liters/Gallons)",
+      unit1: 'liters',
+      unit2: 'gallons',
+    },
+    {
+      convertToUnit1: 0.4535924,
+      convertToUnit2: 2.204623,
+      title: "Weight (Kilograms/Pounds)",
+      unit1: 'kilograms',
+      unit2: 'pounds',
+    },
+  ] satisfies Omit<ConversionProps, "input">[];
+
+  const conversions = conversionData.map((conversion, index) => <Conversion input={value} key={value+index} {...conversion} />);
+
   return (
     <>
       <Header ref={inputRef} handleClick={handleClick} />
       <Wrapper>
-        <Conversion convertToUnit1={3.28084} convertToUnit2={0.3408} input={value} title={"Length (Meter/Feet)"} unit1={'meters'} unit2={'feet'} />
-        <Conversion convertToUnit1={3.7854}  convertToUnit2={0.2641729} input={value} title={"Volume (Liters/Gallons)"} unit1={'liters'} unit2={'gallons'} />
-        <Conversion convertToUnit1={0.4535924} convertToUnit2={2.204623} input={value} title={"Weight (Kilograms/Pounds)"} unit1={'kilograms'} unit2={'pounds'} />
+        {conversions}
       </Wrapper>
       <footer className=' text-center p-4'>
         <a className='hover:underline hover:cursor-pointer' rel='noreferrer' target="_blank" href="https://icons8.com/icon/qrOXrfUDKkOX/calculator">Calculator</a> icon by <a className='hover:underline hover:cursor-pointer' rel='noreferrer' target="_blank" href="https://icons8.com">Icons8</a>
@@ -63,4 +90,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

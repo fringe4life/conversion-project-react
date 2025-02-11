@@ -1,11 +1,11 @@
-type ConversionProps = {
+export type ConversionProps = {
     input: number
     title: string
     unit1: string
     unit2: string
     convertToUnit2: number
     convertToUnit1: number  // Additional property for conversions where the input is in a different unit.
-}
+};
 
 export default function Conversion({input, title, unit1, unit2, convertToUnit1, convertToUnit2}: ConversionProps  ){
     let result1 = (convertToUnit2 * input).toFixed(3)  // Additional property for conversions where the input is in a different unit.
