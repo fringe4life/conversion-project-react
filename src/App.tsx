@@ -53,8 +53,8 @@ function App() {
 
   const conversionData = [
     {
-      convertToUnit1: 3.28084,
-      convertToUnit2: 0.3408,
+      convertToUnit1: 0.3408,
+      convertToUnit2: 3.28084,
       title: "Length (Meter/Feet)",
       unit1: 'meters',
       unit2: 'feet',
